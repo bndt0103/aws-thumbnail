@@ -1,0 +1,223 @@
+{
+  "restoredOn": "2026-10-15",
+  "source": "Bản lưu cục bộ _archives/CloudComputing_Final_documents_20261013/evidence/tuan-1",
+  "report": "Report/BaoCaoTuan1_24110363_24110369.docx",
+  "files": [
+    {
+      "file": "E01_lab-ready.png",
+      "sha256": "6fb95d1b4d320a16f39b90901a40d5040ba8ed83c31c077807db21e27f26b5a8",
+      "reportImage": "word/media/image6.png",
+      "reportLocation": "3.2; Hình 3.3",
+      "notes": "Đã kiểm tra ảnh: chấm AWS xanh; Used $0 of $50; thời gian phiên hiển thị 03:56. Chưa xác nhận ngày giờ chụp, người chụp, Account ID và Region.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E02_account-region.png",
+      "sha256": "f82ba9ae1b96fd34e8e5dd22a1ee503ba99008ba07131f7a2079c773fb00994e",
+      "reportImage": null,
+      "reportLocation": "Thông tin tài khoản tại mục 3.2; ảnh lưu hồ sơ, không chèn trong báo cáo",
+      "notes": "",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E03a_input-objects.png",
+      "sha256": "0189ae87bb796d19d4b58856cee752e8bd865a1f32cdb2a61a19faa3b5e32264",
+      "reportImage": "word/media/image9.png",
+      "reportLocation": "3.4; Hình 3.6",
+      "notes": "Ảnh xác nhận bucket cloudphoto-input-103308504802 và prefix uploads/ đã tạo thành công. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E03b_input-block-public-access.png",
+      "sha256": "453c721d24581361c6245ae22604783c3a4ee620939cad92014c89920c0657d1",
+      "reportImage": "word/media/image11.png",
+      "reportLocation": "3.5.1; Hình 3.8",
+      "notes": "Đã kiểm tra ảnh: bucket cloudphoto-input-103308504802, Block all public access On. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E03c_input-object-ownership.png",
+      "sha256": "f09645b43609195648126441dc7355a908911c1e4268f30e349eb9d0f456aaa8",
+      "reportImage": "word/media/image13.png",
+      "reportLocation": "3.5.2; Hình 3.10",
+      "notes": "Đã kiểm tra ảnh chụp lại: bucket cloudphoto-input-103308504802, Object Ownership Bucket owner enforced, ACLs are disabled. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E03d_input-default-encryption.png",
+      "sha256": "d2e35238bbbd7f796a47cd6b2322c0ab4ec6206d58d454f25460e319c01a9905",
+      "reportImage": "word/media/image15.png",
+      "reportLocation": "3.5.3; Hình 3.12",
+      "notes": "Đã kiểm tra hai ảnh: Region us-east-1, ARN arn:aws:s3:::cloudphoto-input-103308504802, Creation date 2026-10-10 22:58:59 UTC+07:00, Versioning Disabled; Default encryption SSE-S3. Màn hình cũng hiển thị Bucket Key Enabled và blocked encryption type SSE-C. Ngày tạo không phải thời điểm chụp; thời điểm chụp chưa xác nhận.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E03d_input-overview-versioning.png",
+      "sha256": "877ba72147c94ecf10af330560857e4b03ecc5d340fdbbbb005ad22247e85653",
+      "reportImage": null,
+      "reportLocation": "3.5.3; Hình 3.12",
+      "notes": "Đã kiểm tra hai ảnh: Region us-east-1, ARN arn:aws:s3:::cloudphoto-input-103308504802, Creation date 2026-10-10 22:58:59 UTC+07:00, Versioning Disabled; Default encryption SSE-S3. Màn hình cũng hiển thị Bucket Key Enabled và blocked encryption type SSE-C. Ngày tạo không phải thời điểm chụp; thời điểm chụp chưa xác nhận.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E04a_output-objects.png",
+      "sha256": "09377b65764cf3e73d49411dd6e0efb52e2879c0e4620e03673b7c55ebbb5487",
+      "reportImage": "word/media/image10.png",
+      "reportLocation": "3.4; Hình 3.7",
+      "notes": "Đã kiểm tra ảnh: Successfully created bucket cloudphoto-output-103308504802; Objects (0), No objects. Chưa xác nhận thời điểm chụp hoặc cấu hình bảo mật.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E04b_output-block-public-access.png",
+      "sha256": "2952c5698fa4b988868cd508f58be337053cf024bc69ecbbf28d03a0f1c2e123",
+      "reportImage": "word/media/image12.png",
+      "reportLocation": "3.5.1 và 3.5.2; Hình 3.9 và Hình 3.11",
+      "notes": "Đã kiểm tra hai ảnh bucket cloudphoto-output-103308504802: Block all public access On; Object Ownership Bucket owner enforced; ACLs are disabled. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E04b_output-object-ownership.png",
+      "sha256": "77eca13c350c4a1d9a55e44bd7f82e9c225b3d43b6a83f51222844dcaa58b099",
+      "reportImage": "word/media/image14.png",
+      "reportLocation": "3.5.1 và 3.5.2; Hình 3.9 và Hình 3.11",
+      "notes": "Đã kiểm tra hai ảnh bucket cloudphoto-output-103308504802: Block all public access On; Object Ownership Bucket owner enforced; ACLs are disabled. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E04c_output-default-encryption.png",
+      "sha256": "36d5dd0e19314e40fcd3410c9ef6a7837b10b726e013396ce63d662b2aa7de3d",
+      "reportImage": null,
+      "reportLocation": "3.5.3; Hình 3.13 thể hiện mã hóa qua ảnh E18b; ảnh riêng lưu hồ sơ",
+      "notes": "Đã kiểm tra hai ảnh: Region us-east-1; ARN arn:aws:s3:::cloudphoto-output-103308504802; Creation date 2026-10-10 23:18:02 UTC+07:00; Versioning Disabled; Default encryption SSE-S3. Ngày tạo không phải thời điểm chụp; thời điểm chụp chưa xác nhận.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E04c_output-overview-versioning.png",
+      "sha256": "263ef92efc4d471ebf40251e450efbf3552c786a60c51f367f5ac2fb8fb00a52",
+      "reportImage": null,
+      "reportLocation": "3.5.3; Hình 3.13 thể hiện mã hóa qua ảnh E18b; ảnh riêng lưu hồ sơ",
+      "notes": "Đã kiểm tra hai ảnh: Region us-east-1; ARN arn:aws:s3:::cloudphoto-output-103308504802; Creation date 2026-10-10 23:18:02 UTC+07:00; Versioning Disabled; Default encryption SSE-S3. Ngày tạo không phải thời điểm chụp; thời điểm chụp chưa xác nhận.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E05a_dynamodb-settings.png",
+      "sha256": "ec21cd70a0d2899748cdbaf0e90afd18ce2fe03931ebe4794eb54ea740936b6a",
+      "reportImage": "word/media/image17.png",
+      "reportLocation": "3.6; Hình 3.14",
+      "notes": "Dùng chung ảnh E05a: cloud-photo-metadata Active; image_id (String); không sort key; On-demand; Item count hiển thị 0 (chưa kiểm tra trực tiếp bằng Explore table items). PITR Off. Last updated không phải ngày tạo bảng.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E06a_pillow-layer-version.png",
+      "sha256": "cd2009e5be4fd1100767d8f92366ce6e2e17480d27c05b62572ff8c20e2a43d4",
+      "reportImage": "word/media/image19.png",
+      "reportLocation": "3.7; Hình 3.16",
+      "notes": "Dùng chung ảnh E06a: tạo thành công cloud-photo-pillow version 1; compatible runtime python3.12; architecture x86_64; Version ARN arn:aws:lambda:us-east-1:103308504802:layer:cloud-photo-pillow:1. Chưa kiểm chứng import Pillow bằng invoke Lambda; chưa xác nhận thời điểm chụp/ngày tạo tuyệt đối.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E18a_input-tags.png",
+      "sha256": "f867fe9ffd96a0d6abc98b21a95b6af63b6ff5e4efc186bcc3a544b7abb768ba",
+      "reportImage": null,
+      "reportLocation": "3.5.3; nội dung nhãn quản lý; ảnh riêng lưu hồ sơ",
+      "notes": "Đã kiểm tra ảnh bucket input: Project=CloudPhoto; Owner=24110363-24110369. Chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E18b_output-tags.png",
+      "sha256": "b97481d1e5b748a152c3285608427cfa2fa4e7a8691976c5e43a8fcec2306d42",
+      "reportImage": "word/media/image16.png",
+      "reportLocation": "3.5.3; Hình 3.13",
+      "notes": "Bucket cloudphoto-output-103308504802: Project=CloudPhoto; Owner=24110363-24110369. Ảnh cũng hiển thị SSE-S3.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E18c_dynamodb-tags.png",
+      "sha256": "b535c9fb3392bc552d28d7bd822ce7308a68668e8e950ee1b267440ee3cd1656",
+      "reportImage": "word/media/image18.png",
+      "reportLocation": "3.6; Hình 3.15",
+      "notes": "cloud-photo-metadata: Project=CloudPhoto; Owner=24110363-24110369. TTL Off; Encryption AWS-owned key. Last updated không phải ngày tạo.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "E20b_lab-budget-end.png",
+      "sha256": "1736d50aa497358d0dd286b35ef5163dd284a94d9bd678f4d3a69173fa0f939b",
+      "reportImage": "word/media/image20.png",
+      "reportLocation": "3.8; Hình 3.17",
+      "notes": "Trang AWS Academy Learner Lab hiển thị AWS xanh; Used $0 of $50; bộ đếm phiên 02:41. Đây là ngân sách hiển thị tại lúc quan sát, không xác nhận chi phí cuối cùng hoặc quyền Billing. Chưa End Lab; chưa xác nhận thời điểm chụp.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-IAM_labrole-permissions.png",
+      "sha256": "bb47fdcdbcc3fb0c2cdb31268b5a12de8b8a8875f4ca4c97da1490260a62ff4c",
+      "reportImage": null,
+      "reportLocation": "3.3; Hình 3.4 và Hình 3.5",
+      "notes": "Đã xem Permissions: 7 policies (4 AWS managed, 3 customer managed), boundary not set. Trust-01 ghi phần đầu với Effect Allow; Trust-02 thấy lambda.amazonaws.com (dòng 51), ARN LabRole và Action sts:AssumeRole (dòng 63). Chưa kiểm chứng quyền truy cập tài nguyên bằng thực thi Lambda. Chưa xác nhận thời điểm chụp. Ảnh Summary xác nhận ARN LabRole và LabInstanceProfile.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-IAM_labrole-summary.png",
+      "sha256": "533d9e8a5a35751838a09be61832c4d55722961f6c64e53e9da33bc1c1d5f611",
+      "reportImage": "word/media/image7.png",
+      "reportLocation": "3.3; Hình 3.4 và Hình 3.5",
+      "notes": "Đã xem Permissions: 7 policies (4 AWS managed, 3 customer managed), boundary not set. Trust-01 ghi phần đầu với Effect Allow; Trust-02 thấy lambda.amazonaws.com (dòng 51), ARN LabRole và Action sts:AssumeRole (dòng 63). Chưa kiểm chứng quyền truy cập tài nguyên bằng thực thi Lambda. Chưa xác nhận thời điểm chụp. Ảnh Summary xác nhận ARN LabRole và LabInstanceProfile.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-IAM_labrole-trust-01.png",
+      "sha256": "489592a62df2adbb388d98f69ad189c291284db82c34ae17ccd4faedcf6cf4b9",
+      "reportImage": null,
+      "reportLocation": "3.3; Hình 3.4 và Hình 3.5",
+      "notes": "Đã xem Permissions: 7 policies (4 AWS managed, 3 customer managed), boundary not set. Trust-01 ghi phần đầu với Effect Allow; Trust-02 thấy lambda.amazonaws.com (dòng 51), ARN LabRole và Action sts:AssumeRole (dòng 63). Chưa kiểm chứng quyền truy cập tài nguyên bằng thực thi Lambda. Chưa xác nhận thời điểm chụp. Ảnh Summary xác nhận ARN LabRole và LabInstanceProfile.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-IAM_labrole-trust-02.png",
+      "sha256": "71aeba56bebfee3089f5db0b3d3fd955a255b8d533dc780888c653d577883139",
+      "reportImage": "word/media/image8.png",
+      "reportLocation": "3.3; Hình 3.4 và Hình 3.5",
+      "notes": "Đã xem Permissions: 7 policies (4 AWS managed, 3 customer managed), boundary not set. Trust-01 ghi phần đầu với Effect Allow; Trust-02 thấy lambda.amazonaws.com (dòng 51), ARN LabRole và Action sts:AssumeRole (dòng 63). Chưa kiểm chứng quyền truy cập tài nguyên bằng thực thi Lambda. Chưa xác nhận thời điểm chụp. Ảnh Summary xác nhận ARN LabRole và LabInstanceProfile.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-LOCAL_python-git.png",
+      "sha256": "cf4770a6512f0f07116b2e23a76df5b86c409e02bdce3fe38074e8dc6ec79407",
+      "reportImage": "word/media/image4.png",
+      "reportLocation": "3.1; Hình 3.1",
+      "notes": "Terminal tại thư mục dự án: py -3.12 --version trả Python 3.12.10; git --version trả git version 2.54.0.windows.1. Chưa có ảnh cây dự án; chưa xác nhận phiên bản Python của môi trường ảo.",
+      "captureTime": "",
+      "capturedBy": ""
+    },
+    {
+      "file": "W1-TEST_pytest.png",
+      "sha256": "9c40d784257df603f893af4c87d337974f75088a138d5eff6e7e9cfbe2439ea5",
+      "reportImage": "word/media/image5.png",
+      "reportLocation": "3.1; Hình 3.2",
+      "notes": "Ảnh người dùng cung cấp: .\\.venv\\Scripts\\python.exe -m pytest tests -q; 19 passed in 3.00s; 100%. Kết quả kiểm thử cục bộ; không chứng minh Lambda chạy trên AWS. Chưa xác nhận thời điểm chụp, người chụp hoặc phiên bản Python của .venv; chưa có bằng chứng chạy lại.",
+      "captureTime": "",
+      "capturedBy": ""
+    }
+  ]
+}
