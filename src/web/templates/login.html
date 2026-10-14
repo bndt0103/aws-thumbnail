@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Đăng nhập · Cloud Photo</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body class="login-page">
+    <main class="login-card">
+      <div class="brand-icon">CP</div>
+      <p class="eyebrow">THƯ VIỆN ẢNH CỦA NHÓM</p>
+      <h1>Chào mừng trở lại.</h1>
+      <p>Đăng nhập để tải ảnh và xem các phiên bản đã xử lý.</p>
+      <form method="post">
+        <input type="hidden" name="csrf" value="{{ session.csrf }}" /><label
+          for="password"
+          >Mật khẩu gallery</label
+        ><input
+          id="password"
+          name="password"
+          type="password"
+          required
+          autocomplete="current-password"
+        /><button type="submit">Mở thư viện ảnh →</button>
+      </form>
+      {% if error %}
+      <p role="alert" class="error">{{ error }}</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

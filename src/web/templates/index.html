@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="csrf-token" content="{{ session.csrf }}" />
+    <title>Cloud Photo · Thư viện ảnh</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/"><span class="brand-icon">CP</span>Cloud Photo</a
+      ><span class="header-note">Một ảnh gốc. Ba phiên bản sẵn sàng.</span>
+      <form method="post" action="/logout">
+        <input type="hidden" name="csrf" value="{{ session.csrf }}" /><button
+          class="quiet"
+          type="submit"
+        >
+          Đăng xuất
+        </button>
+      </form>
+    </header>
+    <main class="workspace">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">THƯ VIỆN ẢNH TỰ ĐỘNG</p>
+          <h1>Tải ảnh lên.<br />Để phần còn lại tự chạy.</h1>
+          <p class="subtitle">
+            Tạo ảnh thu nhỏ, thêm watermark và giữ mọi phiên bản trong cùng một
+            thư viện.
+          </p>
+        </div>
+        <div class="hero-badge">
+          <strong>3</strong><span>kích thước<br />150 · 400 · 1.000 px</span>
+        </div>
+      </section>
+      <section class="upload-panel">
+        <form id="upload-form">
+          <label class="drop-zone" id="drop-zone" for="file"
+            ><span class="upload-symbol">↑</span
+            ><strong>Chọn ảnh hoặc kéo thả vào đây</strong
+            ><span>JPG, PNG · tối đa 10 MiB · một ảnh mỗi lần</span
+            ><input
+              id="file"
+              name="file"
+              type="file"
+              accept="image/jpeg,image/png"
+              required
+          /></label>
+          <div class="upload-actions">
+            <span id="selected-name">Chưa chọn ảnh</span
+            ><button id="upload-button" type="submit">Tải lên & xử lý →</button>
+          </div>
+        </form>
+        <p id="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="gallery-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">BỘ SƯU TẬP</p>
+            <h2>Ảnh của bạn <span id="count" class="count">0</span></h2>
+          </div>
+          <button id="refresh" class="quiet" type="button">Làm mới</button>
+        </div>
+        <p id="gallery-note" class="muted">Đang tải thư viện…</p>
+        <div id="gallery" class="gallery"></div>
+      </section>
+      <footer>
+        Cloud Photo · Đồ án Cloud Computing · Ảnh gốc được giữ riêng, thumbnail
+        có watermark.
+      </footer>
+    </main>
+    <dialog id="detail">
+      <button id="close-detail" class="quiet close" type="button">
+        Đóng ✕
+      </button>
+      <h2 id="detail-title"></h2>
+      <div id="detail-content"></div>
+    </dialog>
+  </body>
+</html>
