@@ -17,7 +17,7 @@ Minh chứng kiểm thử: [ảnh — 30838ce](https://github.com/bndt0103/aws-t
 
 ## Google Gemini
 
-- **Model:** Không ghi nhận chính xác phiên bản.
+- **Model:** 3.8 Flash.
 - **Prompt (tóm lược):** Xem/tóm lược lịch sử commit, kiểm tra phân công và commit đã phù hợp chưa, hướng dẫn push GitHub và trình bày file Markdown để nộp tuần 1.
 - **AI hỗ trợ:** Hướng dẫn rà soát commit, thao tác Git/push và bố cục Markdown.
 - **Sinh viên thực hiện:** Đối chiếu tệp với commit, thống nhất nội dung đúng phạm vi tuần 1, ghi đầy đủ link và cập nhật hồ sơ. Không gán cho Gemini việc sinh code/test khi phạm vi thực tế nhóm xác nhận là rà soát commit và tài liệu.

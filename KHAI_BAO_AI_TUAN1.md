@@ -4,7 +4,7 @@
 
 Nhóm sử dụng ChatGPT Sol 6.1 hỗ trợ chủ yếu phần mã nguồn và hướng dẫn cấu hình; sinh viên trực tiếp thực hiện cấu hình trên máy và AWS Academy. Google Gemini hỗ trợ tóm lược/rà soát commit, hướng dẫn push GitHub và trình bày Markdown. Bản khai báo bổ sung ghi rõ hai phạm vi này cùng phần nhóm hoàn thiện và link commit đối chiếu.
 
-Thông tin công cụ được cập nhật theo xác nhận của nhóm ngày 15/10/2026. Các prompt dưới đây là bản tóm lược yêu cầu đã trao đổi, không giả định là bản chép nguyên văn hội thoại. Model ChatGPT ghi Sol 6.1 theo xác nhận của nhóm; phiên bản Gemini không được suy đoán khi chưa ghi nhận chính xác.
+Thông tin công cụ được cập nhật theo xác nhận của nhóm ngày 15/10/2026. Các prompt dưới đây là bản tóm lược yêu cầu đã trao đổi, không giả định là bản chép nguyên văn hội thoại. Model ChatGPT ghi Sol 6.1 theo xác nhận của nhóm; phiên bản Gemini 3.8 Flash.
 
 ### 1. ChatGPT — Hỗ trợ mã nguồn, hướng dẫn cấu hình và rà soát báo cáo
 
