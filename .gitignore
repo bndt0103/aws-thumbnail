@@ -1,0 +1,50 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.aws/
+credentials*
+*.pem
+*.key
+config.local.json
+*.local.json
+
+# Generated packages and local results
+dist/
+build/
+.build/
+artifacts/
+tests/local-results/
+*.log
+
+# Local documents and evidence; retain the submitted weekly report
+docs/
+report/*
+Report/*
+evidence/
+diagrams/
+*.doc
+*.docx
+*.pdf
+*.zip
+!Report/BaoCaoTuan1_24110363_24110369.docx
+~$*
+
+# Editor and operating system files
+.idea/
+.vscode/
+.codex/
+.agents/
+.DS_Store
+Thumbs.db
+Desktop.ini
