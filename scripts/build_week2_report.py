@@ -313,6 +313,11 @@ def main():
         paragraph = p("Lịch sử phiên bản công khai: ")
         link(paragraph, "GitHub — nhánh main", REPO + "/commits/main")
 
+    def week2_links():
+        for entry in status.get("week2_commits", []):
+            paragraph = p(entry["code"] + " — " + entry["member"] + ": " + entry["task"] + ". ")
+            link(paragraph, "Commit " + entry["sha"][:7], entry["url"])
+
     def ai_evidence():
         tasks = [
             ("Triển khai Lambda và nguồn sự kiện",
@@ -334,7 +339,9 @@ def main():
               "tuan/T11_api-photos-unauthorized.png",
               "tuan/T12_upload-missing-csrf-403.png"]),
         ]
-        for label, description, names in tasks:
+        task_commits = [["C02"], ["C03"], ["C04"], ["C05", "C06", "C07"]]
+        commits = {entry["code"]: entry for entry in status.get("week2_commits", [])}
+        for (label, description, names), codes in zip(tasks, task_commits):
             paragraph = p()
             paragraph.add_run(label + ". ").bold = True
             paragraph.add_run(description + " Minh chứng: ")
@@ -343,6 +350,14 @@ def main():
                     paragraph.add_run(", ")
                 evidence_reference(paragraph, name)
             paragraph.add_run(".")
+            if any(code in commits for code in codes):
+                paragraph.add_run(" Commit đối chiếu: ")
+                for index, code in enumerate(code for code in codes if code in commits):
+                    if index:
+                        paragraph.add_run(", ")
+                    entry = commits[code]
+                    link(paragraph, entry["sha"][:7], entry["url"])
+                paragraph.add_run(".")
 
     toc_title = p("MỤC LỤC")
     toc_title.paragraph_format.page_break_before = True
@@ -404,6 +419,8 @@ def main():
                     )
                 elif kind == "code_links":
                     code_links()
+                elif kind == "week2_links":
+                    week2_links()
                 elif kind == "ai_evidence":
                     ai_evidence()
                 else:

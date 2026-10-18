@@ -1,0 +1,185 @@
+{
+  "checked_on": "2026-10-18",
+  "source": "GitHub REST API",
+  "repository": "https://github.com/bndt0103/aws-thumbnail",
+  "scope": "Author/account association and committer metadata for the eight week-2 work commits; signature status is recorded separately.",
+  "commits": [
+    {
+      "sha": "a8f99ecd6aea610eb882544076edfc074b33cd99",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/a8f99ecd6aea610eb882544076edfc074b33cd99",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/a8f99ecd6aea610eb882544076edfc074b33cd99",
+      "message": "Tuần 2: bổ sung hướng dẫn, phân công commit và quy tắc lưu minh chứng",
+      "author_name": "Bui Nguyen Duy Trung",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        ".gitignore",
+        "HUONG_DAN_TUAN_2.md",
+        "PHAN_CONG_COMMIT_TUAN2.md"
+      ]
+    },
+    {
+      "sha": "d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+      "message": "Tuần 2: ghi nhận cấu hình Lambda, Pillow Layer và trigger S3",
+      "author_name": "Bui Nguyen Duy Trung",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/trung/E07_lambda-execution-role.png",
+        "evidence/tuan-2/trung/E08a_lambda-runtime-layer.png",
+        "evidence/tuan-2/trung/E08b_lambda-general-configuration.png",
+        "evidence/tuan-2/trung/E08c_lambda-environment-variables.png",
+        "evidence/tuan-2/trung/E08d_lambda-code-uploaded.png",
+        "evidence/tuan-2/trung/E09_lambda-s3-trigger.png"
+      ]
+    },
+    {
+      "sha": "8f6059487de15f78b8e0b503eea5412abba6f3e6",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/8f6059487de15f78b8e0b503eea5412abba6f3e6",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/8f6059487de15f78b8e0b503eea5412abba6f3e6",
+      "message": "Tuần 2: bổ sung kết quả S3, metadata DynamoDB và log CloudWatch",
+      "author_name": "Bui Nguyen Duy Trung",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/trung/E10_s3-input-landscape.png",
+        "evidence/tuan-2/trung/E11_s3-output-three-thumbnails.png",
+        "evidence/tuan-2/trung/E12_output-thumbnail-1000x625.jpg",
+        "evidence/tuan-2/trung/E12_thumbnail-watermark-dimensions.png",
+        "evidence/tuan-2/trung/E13a_dynamodb-complete-original.png",
+        "evidence/tuan-2/trung/E13c_dynamodb-variant-150.png",
+        "evidence/tuan-2/trung/E13d_dynamodb-variants-400-1000.png",
+        "evidence/tuan-2/trung/E14b_cloudwatch-report-details.png",
+        "evidence/tuan-2/trung/E14c_cloudwatch-retention-7-days.png",
+        "evidence/tuan-2/trung/E15_lambda-monitor-metrics.png"
+      ]
+    },
+    {
+      "sha": "39678dc6bdc112baa7a5682adfd09e63a9c87644",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/39678dc6bdc112baa7a5682adfd09e63a9c87644",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/39678dc6bdc112baa7a5682adfd09e63a9c87644",
+      "message": "Tuần 2: ghi nhận kiểm tra duplicate và notification của bucket output",
+      "author_name": "Bui Nguyen Duy Trung",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/trung/E19a_lambda-duplicate-response.png",
+        "evidence/tuan-2/trung/E19b_cloudwatch-complete-duplicate.png",
+        "evidence/tuan-2/trung/E19c_s3-output-after-duplicate.png",
+        "evidence/tuan-2/trung/T09a_output-loop-check-upload.png",
+        "evidence/tuan-2/trung/T09b_cloudwatch-after-output-upload.png",
+        "evidence/tuan-2/trung/T09c_output-no-event-notifications.png"
+      ]
+    },
+    {
+      "sha": "b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+      "message": "Tuần 2: bổ sung minh chứng gallery xử lý ảnh hợp lệ",
+      "author_name": "Đỗ Anh Tuấn",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/tuan/T02_gallery-portrait-complete.png",
+        "evidence/tuan-2/tuan/T03_gallery-square-complete.png",
+        "evidence/tuan-2/tuan/T04_gallery-transparent-white-background.png",
+        "evidence/tuan-2/tuan/T05_gallery-small-no-upscale.png",
+        "evidence/tuan-2/tuan/W2-L01_gallery-landscape-complete.png"
+      ]
+    },
+    {
+      "sha": "9795a3b5872e3b832846bc752712c307425e2ce9",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/9795a3b5872e3b832846bc752712c307425e2ce9",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/9795a3b5872e3b832846bc752712c307425e2ce9",
+      "message": "Tuần 2: bổ sung kiểm tra ảnh lỗi, giới hạn upload, tên trùng và xác thực",
+      "author_name": "Đỗ Anh Tuấn",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/tuan/T06_gallery-broken-rejected.png",
+        "evidence/tuan-2/tuan/T07a_gallery-oversize-rejected.png",
+        "evidence/tuan-2/tuan/T07b_api-oversize-http-400.png",
+        "evidence/tuan-2/tuan/T10a_gallery-second-landscape-upload.png",
+        "evidence/tuan-2/tuan/T10b_api-landscape-second-key.png",
+        "evidence/tuan-2/tuan/T10c_api-landscape-first-key.png",
+        "evidence/tuan-2/tuan/T11_api-photos-unauthorized.png",
+        "evidence/tuan-2/tuan/T12_upload-missing-csrf-403.png"
+      ]
+    },
+    {
+      "sha": "f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+      "message": "Tuần 2: đối chiếu danh mục minh chứng và kết quả 12 tình huống kiểm thử",
+      "author_name": "Đỗ Anh Tuấn",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "evidence/tuan-2/DANH_MUC_MINH_CHUNG.csv",
+        "evidence/tuan-2/DOI_CHIEU_ANH.json",
+        "evidence/tuan-2/README.md",
+        "progress/week-2/test-results.csv"
+      ]
+    },
+    {
+      "sha": "92d81a4a6aeb898cabb810a8e23d3b87e5372ac0",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0",
+      "api_url": "https://api.github.com/repos/bndt0103/aws-thumbnail/commits/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0",
+      "message": "Tuần 2: hoàn thiện báo cáo Word, khai báo AI và dữ liệu tổng hợp",
+      "author_name": "Đỗ Anh Tuấn",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_name": "Bui Nguyen Duy Trung",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "signature_verified": false,
+      "signature_reason": "unsigned",
+      "files": [
+        "BAO_CAO_NOP_BAI_TUAN2.md",
+        "KHAI_BAO_AI_TUAN2.md",
+        "Report/BaoCaoTuan2_24110363_24110369.docx",
+        "progress/week-2/report-content.json",
+        "progress/week-2/report-status.json",
+        "requirements-report.txt",
+        "scripts/build_week2_report.py"
+      ]
+    }
+  ]
+}

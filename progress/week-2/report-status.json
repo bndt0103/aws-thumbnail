@@ -11,13 +11,314 @@
   },
   "aws_summary": "Đã đối chiếu Lambda Python 3.12/x86_64, handler đúng, Pillow Layer v1, LabRole, memory 1024 MB, timeout 60 giây, bốn biến cấu hình và trigger input uploads/. Upload S3 tạo ba thumbnail và DynamoDB COMPLETE; CloudWatch ghi processing_ms 529, Duration 579,67 ms, Max Memory Used 152 MB, retention 1 tuần. Đã có minh chứng duplicate và cấu hình tránh vòng lặp.",
   "gallery_summary": "Gallery tại 127.0.0.1:5000 hiển thị kết quả AWS; ảnh ngang, dọc, vuông, trong suốt và nhỏ được xử lý. Có ảnh từ chối dữ liệu hỏng, giới hạn dung lượng HTTP 400, hai upload cùng tên khác key, API 401 sau đăng xuất và POST thiếu CSRF trả 403.",
-  "week2_commits": [],
+  "week2_commits": [
+    {
+      "code": "C01",
+      "member": "Bùi Nguyễn Duy Trung",
+      "sha": "a8f99ecd6aea610eb882544076edfc074b33cd99",
+      "task": "bổ sung hướng dẫn, phân công commit và quy tắc lưu minh chứng",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/a8f99ecd6aea610eb882544076edfc074b33cd99",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": ".gitignore",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/a8f99ecd6aea610eb882544076edfc074b33cd99/.gitignore"
+        },
+        {
+          "label": "HUONG_DAN_TUAN_2.md",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/a8f99ecd6aea610eb882544076edfc074b33cd99/HUONG_DAN_TUAN_2.md"
+        },
+        {
+          "label": "PHAN_CONG_COMMIT_TUAN2.md",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/a8f99ecd6aea610eb882544076edfc074b33cd99/PHAN_CONG_COMMIT_TUAN2.md"
+        }
+      ]
+    },
+    {
+      "code": "C02",
+      "member": "Bùi Nguyễn Duy Trung",
+      "sha": "d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+      "task": "ghi nhận cấu hình Lambda, Pillow Layer và trigger S3",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/trung/E07_lambda-execution-role.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E07_lambda-execution-role.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E08a_lambda-runtime-layer.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E08a_lambda-runtime-layer.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E08b_lambda-general-configuration.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E08b_lambda-general-configuration.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E08c_lambda-environment-variables.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E08c_lambda-environment-variables.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E08d_lambda-code-uploaded.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E08d_lambda-code-uploaded.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E09_lambda-s3-trigger.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a/evidence/tuan-2/trung/E09_lambda-s3-trigger.png"
+        }
+      ]
+    },
+    {
+      "code": "C03",
+      "member": "Bùi Nguyễn Duy Trung",
+      "sha": "8f6059487de15f78b8e0b503eea5412abba6f3e6",
+      "task": "bổ sung kết quả S3, metadata DynamoDB và log CloudWatch",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/8f6059487de15f78b8e0b503eea5412abba6f3e6",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/trung/E10_s3-input-landscape.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E10_s3-input-landscape.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E11_s3-output-three-thumbnails.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E11_s3-output-three-thumbnails.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E12_output-thumbnail-1000x625.jpg",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E12_output-thumbnail-1000x625.jpg"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E12_thumbnail-watermark-dimensions.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E12_thumbnail-watermark-dimensions.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E13a_dynamodb-complete-original.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E13a_dynamodb-complete-original.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E13c_dynamodb-variant-150.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E13c_dynamodb-variant-150.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E13d_dynamodb-variants-400-1000.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E13d_dynamodb-variants-400-1000.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E14b_cloudwatch-report-details.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E14b_cloudwatch-report-details.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E14c_cloudwatch-retention-7-days.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E14c_cloudwatch-retention-7-days.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E15_lambda-monitor-metrics.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/8f6059487de15f78b8e0b503eea5412abba6f3e6/evidence/tuan-2/trung/E15_lambda-monitor-metrics.png"
+        }
+      ]
+    },
+    {
+      "code": "C04",
+      "member": "Bùi Nguyễn Duy Trung",
+      "sha": "39678dc6bdc112baa7a5682adfd09e63a9c87644",
+      "task": "ghi nhận kiểm tra duplicate và notification của bucket output",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/39678dc6bdc112baa7a5682adfd09e63a9c87644",
+      "author_email": "bndt0103@gmail.com",
+      "author_login": "bndt0103",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/trung/E19a_lambda-duplicate-response.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/E19a_lambda-duplicate-response.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E19b_cloudwatch-complete-duplicate.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/E19b_cloudwatch-complete-duplicate.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/E19c_s3-output-after-duplicate.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/E19c_s3-output-after-duplicate.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/T09a_output-loop-check-upload.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/T09a_output-loop-check-upload.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/T09b_cloudwatch-after-output-upload.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/T09b_cloudwatch-after-output-upload.png"
+        },
+        {
+          "label": "evidence/tuan-2/trung/T09c_output-no-event-notifications.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/39678dc6bdc112baa7a5682adfd09e63a9c87644/evidence/tuan-2/trung/T09c_output-no-event-notifications.png"
+        }
+      ]
+    },
+    {
+      "code": "C05",
+      "member": "Đỗ Anh Tuấn",
+      "sha": "b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+      "task": "bổ sung minh chứng gallery xử lý ảnh hợp lệ",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/tuan/T02_gallery-portrait-complete.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/b0d72a2e01e68c66671a12b02a6397dc7117c80a/evidence/tuan-2/tuan/T02_gallery-portrait-complete.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T03_gallery-square-complete.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/b0d72a2e01e68c66671a12b02a6397dc7117c80a/evidence/tuan-2/tuan/T03_gallery-square-complete.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T04_gallery-transparent-white-background.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/b0d72a2e01e68c66671a12b02a6397dc7117c80a/evidence/tuan-2/tuan/T04_gallery-transparent-white-background.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T05_gallery-small-no-upscale.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/b0d72a2e01e68c66671a12b02a6397dc7117c80a/evidence/tuan-2/tuan/T05_gallery-small-no-upscale.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/W2-L01_gallery-landscape-complete.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/b0d72a2e01e68c66671a12b02a6397dc7117c80a/evidence/tuan-2/tuan/W2-L01_gallery-landscape-complete.png"
+        }
+      ]
+    },
+    {
+      "code": "C06",
+      "member": "Đỗ Anh Tuấn",
+      "sha": "9795a3b5872e3b832846bc752712c307425e2ce9",
+      "task": "bổ sung kiểm tra ảnh lỗi, giới hạn upload, tên trùng và xác thực",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/9795a3b5872e3b832846bc752712c307425e2ce9",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/tuan/T06_gallery-broken-rejected.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T06_gallery-broken-rejected.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T07a_gallery-oversize-rejected.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T07a_gallery-oversize-rejected.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T07b_api-oversize-http-400.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T07b_api-oversize-http-400.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T10a_gallery-second-landscape-upload.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T10a_gallery-second-landscape-upload.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T10b_api-landscape-second-key.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T10b_api-landscape-second-key.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T10c_api-landscape-first-key.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T10c_api-landscape-first-key.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T11_api-photos-unauthorized.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T11_api-photos-unauthorized.png"
+        },
+        {
+          "label": "evidence/tuan-2/tuan/T12_upload-missing-csrf-403.png",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/9795a3b5872e3b832846bc752712c307425e2ce9/evidence/tuan-2/tuan/T12_upload-missing-csrf-403.png"
+        }
+      ]
+    },
+    {
+      "code": "C07",
+      "member": "Đỗ Anh Tuấn",
+      "sha": "f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+      "task": "đối chiếu danh mục minh chứng và kết quả 12 tình huống kiểm thử",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "evidence/tuan-2/DANH_MUC_MINH_CHUNG.csv",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/f4a4ad9cbb1af3ba38ab208463e53850af52864a/evidence/tuan-2/DANH_MUC_MINH_CHUNG.csv"
+        },
+        {
+          "label": "evidence/tuan-2/DOI_CHIEU_ANH.json",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/f4a4ad9cbb1af3ba38ab208463e53850af52864a/evidence/tuan-2/DOI_CHIEU_ANH.json"
+        },
+        {
+          "label": "evidence/tuan-2/README.md",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/f4a4ad9cbb1af3ba38ab208463e53850af52864a/evidence/tuan-2/README.md"
+        },
+        {
+          "label": "progress/week-2/test-results.csv",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/f4a4ad9cbb1af3ba38ab208463e53850af52864a/progress/week-2/test-results.csv"
+        }
+      ]
+    },
+    {
+      "code": "C08",
+      "member": "Đỗ Anh Tuấn",
+      "sha": "92d81a4a6aeb898cabb810a8e23d3b87e5372ac0",
+      "task": "hoàn thiện báo cáo Word, khai báo AI và dữ liệu tổng hợp",
+      "url": "https://github.com/bndt0103/aws-thumbnail/commit/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0",
+      "author_email": "24110369@student.hcmute.edu.vn",
+      "author_login": "DoAnhTuan-24110369",
+      "committer_email": "bndt0103@gmail.com",
+      "committer_login": "bndt0103",
+      "file_links": [
+        {
+          "label": "BAO_CAO_NOP_BAI_TUAN2.md",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/BAO_CAO_NOP_BAI_TUAN2.md"
+        },
+        {
+          "label": "KHAI_BAO_AI_TUAN2.md",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/KHAI_BAO_AI_TUAN2.md"
+        },
+        {
+          "label": "Report/BaoCaoTuan2_24110363_24110369.docx",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/Report/BaoCaoTuan2_24110363_24110369.docx"
+        },
+        {
+          "label": "progress/week-2/report-content.json",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/progress/week-2/report-content.json"
+        },
+        {
+          "label": "progress/week-2/report-status.json",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/progress/week-2/report-status.json"
+        },
+        {
+          "label": "requirements-report.txt",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/requirements-report.txt"
+        },
+        {
+          "label": "scripts/build_week2_report.py",
+          "url": "https://github.com/bndt0103/aws-thumbnail/blob/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0/scripts/build_week2_report.py"
+        }
+      ]
+    }
+  ],
   "ai_tools": [
     {
       "name": "ChatGPT/Codex",
       "model": "Không ghi nhận chính xác phiên bản/model trong hồ sơ tuần 2.",
-      "prompt_summary": "Đối chiếu hướng dẫn tuần 2 với mã nguồn và tài liệu cũ; phân công từng thành viên, hướng dẫn commit riêng và soạn báo cáo theo bố cục tuần 1.",
-      "generated": "Rà soát tài liệu, hướng dẫn cấu hình và kiểm thử từng bước, giải thích log, phân loại ảnh và biên tập báo cáo Word theo kết quả thực tế.",
+      "prompt_summary": "Tiếp tục tích hợp S3–Lambda–DynamoDB và gallery từ tuần 1; đối chiếu kết quả và ảnh thật; viết báo cáo hoàn chỉnh; phân công commit từng file; commit/push bằng tiếng Việt và tổng hợp link thật vào hồ sơ nộp bài.",
+      "generated": "Rà soát tài liệu; hướng dẫn cấu hình và kiểm thử; giải thích log; phân loại ảnh; biên tập Word/Markdown; thực hiện stage, commit và push theo ủy quyền của nhóm.",
       "student_changes": "Nhóm trực tiếp cấu hình Lambda, Layer, role, biến môi trường và trigger; upload ảnh, kiểm tra S3/DynamoDB/CloudWatch; chạy gallery, các tình huống ảnh, dung lượng, duplicate, xác thực và CSRF; cung cấp ảnh chụp để đối chiếu.",
       "evidence_links": [
         "evidence/tuan-2/trung/E08a_lambda-runtime-layer.png",
@@ -28,7 +329,21 @@
         "evidence/tuan-2/tuan/T11_api-photos-unauthorized.png",
         "evidence/tuan-2/tuan/T12_upload-missing-csrf-403.png"
       ],
-      "commit_links": []
+      "commit_links": [
+        "https://github.com/bndt0103/aws-thumbnail/commit/a8f99ecd6aea610eb882544076edfc074b33cd99",
+        "https://github.com/bndt0103/aws-thumbnail/commit/d792ca0e5762d76eef01c299ac0b6d36bcc02f4a",
+        "https://github.com/bndt0103/aws-thumbnail/commit/8f6059487de15f78b8e0b503eea5412abba6f3e6",
+        "https://github.com/bndt0103/aws-thumbnail/commit/39678dc6bdc112baa7a5682adfd09e63a9c87644",
+        "https://github.com/bndt0103/aws-thumbnail/commit/b0d72a2e01e68c66671a12b02a6397dc7117c80a",
+        "https://github.com/bndt0103/aws-thumbnail/commit/9795a3b5872e3b832846bc752712c307425e2ce9",
+        "https://github.com/bndt0103/aws-thumbnail/commit/f4a4ad9cbb1af3ba38ab208463e53850af52864a",
+        "https://github.com/bndt0103/aws-thumbnail/commit/92d81a4a6aeb898cabb810a8e23d3b87e5372ac0"
+      ]
     }
-  ]
+  ],
+  "commit_verification": {
+    "checked_on": "2026-10-18",
+    "file": "progress/week-2/commit-verification.json",
+    "note": "GitHub gắn C05–C08 với tác giả DoAnhTuan-24110369 qua email trường. Committer của tám commit là bndt0103; các commit chưa được ký số."
+  }
 }

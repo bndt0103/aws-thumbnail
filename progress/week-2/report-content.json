@@ -648,6 +648,17 @@
             },
             {
               "type": "code_links"
+            },
+            {
+              "type": "p",
+              "text": "Các mốc commit tuần 2 dưới đây ghi nhận bộ minh chứng AWS, kiểm thử gallery và hồ sơ tổng hợp đã được đưa lên nhánh main. Bốn mốc đầu thuộc phần phân công của Trung; bốn mốc sau thuộc phần phân công của Tuấn."
+            },
+            {
+              "type": "week2_links"
+            },
+            {
+              "type": "p",
+              "text": "GitHub gắn tác giả bốn commit phần Tuấn với tài khoản DoAnhTuan-24110369 qua email 24110369@student.hcmute.edu.vn. Các thao tác commit và push được thực hiện hộ từ môi trường Git của Trung theo ủy quyền; trường Committer ghi bndt0103. Metadata này ghi nhận việc đưa hồ sơ lên Git và không tự xác nhận ai đã thao tác từng phép thử."
             }
           ]
         },
@@ -656,11 +667,11 @@
           "blocks": [
             {
               "type": "p",
-              "text": "Nhóm sử dụng ChatGPT/Codex để hỗ trợ rà soát tài liệu, giải thích cấu hình AWS, hướng dẫn kiểm thử, đọc log và biên tập báo cáo. Phiên bản model cụ thể không được ghi nhận trong hồ sơ tuần này."
+              "text": "Nhóm sử dụng ChatGPT/Codex để hỗ trợ rà soát tài liệu, giải thích cấu hình AWS, hướng dẫn kiểm thử, đọc log, biên tập báo cáo và quản lý các commit theo phân công. Phiên bản model cụ thể không được ghi nhận trong hồ sơ tuần này."
             },
             {
               "type": "p",
-              "text": "Yêu cầu trao đổi được tóm lược như sau: tiếp tục từ nền tảng tuần 1, hướng dẫn tích hợp S3–Lambda–DynamoDB và gallery, xác định ảnh cần chụp, giải thích kết quả và tổ chức báo cáo tuần 2 theo minh chứng thực tế."
+              "text": "Yêu cầu trao đổi được tóm lược như sau: tiếp tục từ nền tảng tuần 1, hướng dẫn tích hợp S3–Lambda–DynamoDB và gallery, xác định ảnh minh chứng, giải thích kết quả và viết báo cáo hoàn chỉnh; phân công file, thực hiện commit bằng tiếng Việt và tổng hợp liên kết GitHub thật."
             },
             {
               "type": "p",
@@ -671,7 +682,7 @@
             },
             {
               "type": "p",
-              "text": "Các commit mã nguồn được dẫn ở mục 4.3 ghi nhận phiên bản nền kế thừa từ tuần 1. Kết quả vận hành tuần 2 được đối chiếu bằng các hình trong chương 3; không dùng ngày commit nền để suy ra ngày cấu hình hoặc nguồn gốc từng dòng mã."
+              "text": "Các liên kết ở mục 4.3 tách mã nguồn nền tuần 1 với các commit minh chứng tuần 2. AI đã hỗ trợ thực hiện stage, commit và push theo yêu cầu của nhóm; hồ sơ giữ đúng thông tin Author và Committer. Ảnh vận hành được đối chiếu trong chương 3, không dùng ngày commit để suy ra ngày tạo tài nguyên hoặc nguồn gốc từng dòng mã."
             }
           ]
         },
