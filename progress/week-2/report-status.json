@@ -1,0 +1,34 @@
+{
+  "report_stage": "completed",
+  "prepared_on": "2026-10-18",
+  "group_status": "Tuần 2 đã hoàn thành luồng xử lý ảnh trên AWS và gallery cục bộ; 12 tình huống kiểm tra được đối chiếu với minh chứng thực tế.",
+  "local_verification": {
+    "date": "2026-10-18",
+    "passed": 19,
+    "duration_seconds": 2.85,
+    "scope": "Kiểm thử cục bộ bằng dịch vụ AWS giả lập; không phải kết quả tích hợp tuần 2.",
+    "package_checked": true
+  },
+  "aws_summary": "Đã đối chiếu Lambda Python 3.12/x86_64, handler đúng, Pillow Layer v1, LabRole, memory 1024 MB, timeout 60 giây, bốn biến cấu hình và trigger input uploads/. Upload S3 tạo ba thumbnail và DynamoDB COMPLETE; CloudWatch ghi processing_ms 529, Duration 579,67 ms, Max Memory Used 152 MB, retention 1 tuần. Đã có minh chứng duplicate và cấu hình tránh vòng lặp.",
+  "gallery_summary": "Gallery tại 127.0.0.1:5000 hiển thị kết quả AWS; ảnh ngang, dọc, vuông, trong suốt và nhỏ được xử lý. Có ảnh từ chối dữ liệu hỏng, giới hạn dung lượng HTTP 400, hai upload cùng tên khác key, API 401 sau đăng xuất và POST thiếu CSRF trả 403.",
+  "week2_commits": [],
+  "ai_tools": [
+    {
+      "name": "ChatGPT/Codex",
+      "model": "Không ghi nhận chính xác phiên bản/model trong hồ sơ tuần 2.",
+      "prompt_summary": "Đối chiếu hướng dẫn tuần 2 với mã nguồn và tài liệu cũ; phân công từng thành viên, hướng dẫn commit riêng và soạn báo cáo theo bố cục tuần 1.",
+      "generated": "Rà soát tài liệu, hướng dẫn cấu hình và kiểm thử từng bước, giải thích log, phân loại ảnh và biên tập báo cáo Word theo kết quả thực tế.",
+      "student_changes": "Nhóm trực tiếp cấu hình Lambda, Layer, role, biến môi trường và trigger; upload ảnh, kiểm tra S3/DynamoDB/CloudWatch; chạy gallery, các tình huống ảnh, dung lượng, duplicate, xác thực và CSRF; cung cấp ảnh chụp để đối chiếu.",
+      "evidence_links": [
+        "evidence/tuan-2/trung/E08a_lambda-runtime-layer.png",
+        "evidence/tuan-2/trung/E09_lambda-s3-trigger.png",
+        "evidence/tuan-2/trung/E14b_cloudwatch-report-details.png",
+        "evidence/tuan-2/tuan/W2-L01_gallery-landscape-complete.png",
+        "evidence/tuan-2/tuan/T07b_api-oversize-http-400.png",
+        "evidence/tuan-2/tuan/T11_api-photos-unauthorized.png",
+        "evidence/tuan-2/tuan/T12_upload-missing-csrf-403.png"
+      ],
+      "commit_links": []
+    }
+  ]
+}

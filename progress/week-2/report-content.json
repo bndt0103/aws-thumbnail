@@ -1,0 +1,707 @@
+{
+  "title": "Báo cáo tiến độ tuần 2",
+  "chapters": [
+    {
+      "title": "CHƯƠNG 1. TỔNG QUAN ĐỀ TÀI VÀ MỤC TIÊU TUẦN 2",
+      "sections": [
+        {
+          "title": "1.1. Bài toán và mục tiêu của hệ thống",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Đề tài “Xử lý ảnh tự động: tạo thumbnail khi upload lên S3” xây dựng hệ thống tiếp nhận ảnh gốc và tự động tạo các phiên bản ảnh thu nhỏ phục vụ website hoặc thư viện ảnh. Thay vì xử lý từng ảnh bằng tay, người dùng tải ảnh lên một lần; hệ thống tạo thumbnail, bổ sung watermark, lưu kết quả và ghi lại thông tin để tra cứu."
+            },
+            {
+              "type": "p",
+              "text": "Thành phần xử lý ảnh sử dụng AWS Lambda và thư viện Pillow. Amazon S3 lưu riêng ảnh gốc và ảnh kết quả, DynamoDB lưu metadata và trạng thái, CloudWatch cung cấp nhật ký và chỉ số theo dõi. Giao diện Flask hỗ trợ đăng nhập, tải ảnh và xem các phiên bản đã xử lý."
+            },
+            {
+              "type": "repo"
+            }
+          ]
+        },
+        {
+          "title": "1.2. Nền tảng kế thừa từ tuần 1",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Tuần 1 đã xác định kiến trúc, chuẩn bị Python 3.12, xây dựng mã xử lý ảnh và bộ kiểm thử, đồng thời tạo các tài nguyên nền trên AWS Academy. Tuần 2 tiếp tục sử dụng các tài nguyên này để hoàn thiện và kiểm chứng luồng xử lý trên AWS."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Thành phần",
+                "Nội dung kế thừa"
+              ],
+              "rows": [
+                [
+                  "S3",
+                  "Hai bucket cloudphoto-input-103308504802 và cloudphoto-output-103308504802; ảnh gốc dùng tiền tố uploads/; truy cập riêng tư, mã hóa SSE-S3."
+                ],
+                [
+                  "DynamoDB",
+                  "Bảng cloud-photo-metadata; khóa phân vùng image_id kiểu String; không có khóa sắp xếp; chế độ On-demand."
+                ],
+                [
+                  "Pillow Layer",
+                  "cloud-photo-pillow phiên bản 1, tương thích Python 3.12 và x86_64."
+                ],
+                [
+                  "Mã nguồn",
+                  "Module Pillow, Lambda worker, Flask và 19 ca kiểm thử cục bộ với dịch vụ AWS giả lập."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "1.3. Phạm vi thực hiện trong tuần 2",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Mục tiêu của tuần 2 là triển khai hàm Lambda, kết nối sự kiện S3, xác nhận ảnh kết quả và metadata, sau đó chạy gallery cục bộ kết nối với AWS thật. Nhóm đã thực hiện các tình huống về loại ảnh, dung lượng, sự kiện trùng, ảnh cùng tên, xác thực và CSRF."
+            },
+            {
+              "type": "p",
+              "text": "Hệ thống tiếp nhận JPEG/PNG tĩnh, tối đa 10 MiB và 24 triệu pixel. Ba phiên bản JPEG có cạnh dài tối đa 150, 400 và 1000 pixel; giữ tỷ lệ, không phóng to ảnh nhỏ. Gallery trong tuần này chạy tại 127.0.0.1:5000; việc triển khai giao diện lên EC2 thuộc giai đoạn tiếp theo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "CHƯƠNG 2. KIẾN TRÚC VÀ CƠ CHẾ XỬ LÝ",
+      "sections": [
+        {
+          "title": "2.1. Luồng hoạt động của hệ thống",
+          "blocks": [
+            {
+              "type": "diagram"
+            },
+            {
+              "type": "p",
+              "text": "Người dùng đăng nhập gallery và tải ảnh. Flask sinh khóa lưu trữ duy nhất trong uploads/, ghi ảnh vào bucket đầu vào và trả thông báo chờ xử lý. Sự kiện tạo object trên S3 kích hoạt Lambda; hàm dùng Pillow để tạo thumbnail, ghi vào bucket đầu ra và cập nhật DynamoDB."
+            },
+            {
+              "type": "p",
+              "text": "Gallery đọc dữ liệu từ DynamoDB và tạo URL ký sẵn có thời hạn 300 giây để trình duyệt hiển thị thumbnail từ S3. Việc thu nhỏ ảnh được thực hiện tại Lambda; Flask đảm nhận giao diện và truy cập dữ liệu. CloudWatch lưu log để đối chiếu trạng thái và theo dõi các lần gọi hàm."
+            }
+          ]
+        },
+        {
+          "title": "2.2. Cấu hình tích hợp",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Thông số",
+                "Giá trị sử dụng"
+              ],
+              "rows": [
+                [
+                  "Region",
+                  "us-east-1 — N. Virginia"
+                ],
+                [
+                  "Lambda / handler",
+                  "cloud-photo-processor / lambda_function.lambda_handler"
+                ],
+                [
+                  "Runtime / kiến trúc",
+                  "Python 3.12 / x86_64"
+                ],
+                [
+                  "Execution role / Layer",
+                  "LabRole / cloud-photo-pillow phiên bản 1"
+                ],
+                [
+                  "Bộ nhớ / timeout / lưu trữ tạm",
+                  "1024 MB / 60 giây / 512 MB"
+                ],
+                [
+                  "Nguồn sự kiện",
+                  "Bucket đầu vào; s3:ObjectCreated:*; tiền tố uploads/"
+                ],
+                [
+                  "Biến môi trường",
+                  "INPUT_BUCKET, OUTPUT_BUCKET, TABLE_NAME; WATERMARK_TEXT=CLOUD PHOTO"
+                ],
+                [
+                  "Log group / thời gian lưu",
+                  "/aws/lambda/cloud-photo-processor / 7 ngày"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Lambda sử dụng execution role có sẵn của Learner Lab. Gallery cục bộ sử dụng credential tạm trong tiến trình chạy; khóa truy cập không được đưa vào mã nguồn hoặc báo cáo. Hai bucket tiếp tục được quản lý riêng tư; ảnh được hiển thị thông qua URL ký sẵn."
+            }
+          ]
+        },
+        {
+          "title": "2.3. Metadata, trạng thái và xử lý trùng",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Mỗi lần xử lý được nhận diện bằng image_id, tạo từ bucket, khóa object và thông tin revision của sự kiện. DynamoDB ghi vị trí ảnh gốc, tên tệp, kích thước, danh sách thumbnail, trạng thái và thời gian xử lý. Mỗi thumbnail lưu tại thumbnails/<image_id>/<size>.jpg."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Trạng thái",
+                "Ý nghĩa trong chương trình"
+              ],
+              "rows": [
+                [
+                  "PROCESSING",
+                  "Worker đã nhận xử lý và ghi bản ghi điều phối."
+                ],
+                [
+                  "COMPLETE",
+                  "Tạo và lưu thumbnail thành công; metadata kết quả đã được cập nhật."
+                ],
+                [
+                  "REJECTED",
+                  "Ảnh không đáp ứng điều kiện xử lý, chẳng hạn dữ liệu hỏng hoặc định dạng không hợp lệ."
+                ],
+                [
+                  "FAILED",
+                  "Lỗi xử lý hoặc lỗi dịch vụ; chương trình ném lại lỗi để Lambda có thể retry."
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Worker dùng ghi có điều kiện trong DynamoDB và tên đầu ra xác định để hạn chế xử lý trùng. Sự kiện đã hoàn tất được trả về DUPLICATE và ghi log DUPLICATE_SKIPPED. Sự kiện từ bucket khác hoặc ngoài uploads/ bị bỏ qua; bucket đầu ra không được cấu hình làm nguồn kích hoạt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "CHƯƠNG 3. KẾT QUẢ TRIỂN KHAI VÀ MINH CHỨNG",
+      "sections": [
+        {
+          "title": "3.1. Chuẩn bị mã triển khai",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm sử dụng môi trường Python 3.12 để đóng gói worker thành lambda_processor.zip. Gói có image_tools.py và lambda_function.py tại thư mục gốc, phù hợp với handler lambda_function.lambda_handler. Pillow được cung cấp bằng Layer đã tạo ở tuần 1, tách khỏi mã worker."
+            },
+            {
+              "type": "p",
+              "text": "Kiểm tra cục bộ ngày 18/10/2026 ghi nhận 19/19 ca đạt trong 2,85 giây, gồm 10 ca xử lý ảnh, 5 ca worker và 4 ca Flask. Các ca này dùng dịch vụ AWS giả lập. Kết quả chạy AWS thật được trình bày riêng trong các mục dưới đây."
+            }
+          ]
+        },
+        {
+          "title": "3.2. Triển khai Lambda và gắn Pillow Layer",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm tạo cloud-photo-processor, tải gói mã lên và gắn cloud-photo-pillow phiên bản 1. Runtime được thống nhất là Python 3.12, kiến trúc x86_64 và handler lambda_function.lambda_handler. Cấu hình này giúp mã gọi đúng điểm thực thi và sử dụng thư viện Pillow tương thích với môi trường Lambda."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E08a_lambda-runtime-layer.png",
+              "caption": "Runtime, handler, kiến trúc và Pillow Layer của hàm xử lý ảnh"
+            },
+            {
+              "type": "p",
+              "text": "Hàm sử dụng LabRole làm execution role. Màn hình Permissions có thông báo tài khoản lab bị từ chối thao tác xem IAM policy; thông báo này liên quan quyền đọc chi tiết policy của người dùng Console. Kết quả xử lý ảnh, ghi S3, DynamoDB và CloudWatch sau đó xác nhận các thao tác cần thiết của lần thử đã thực thi được."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E07_lambda-execution-role.png",
+              "caption": "Execution role LabRole được gắn cho Lambda"
+            },
+            {
+              "type": "p",
+              "text": "Nhóm đặt bộ nhớ 1024 MB, timeout 60 giây và lưu trữ tạm 512 MB. Bốn biến môi trường khai báo bucket input, bucket output, tên bảng DynamoDB và watermark CLOUD PHOTO. Cách cấu hình này tách tên tài nguyên khỏi mã nguồn, thuận tiện đối chiếu khi triển khai."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E08b_lambda-general-configuration.png",
+              "caption": "Cấu hình bộ nhớ, timeout và lưu trữ tạm của Lambda"
+            },
+            {
+              "type": "fig",
+              "file": "trung/E08c_lambda-environment-variables.png",
+              "caption": "Bốn biến môi trường liên kết Lambda với tài nguyên dự án"
+            }
+          ]
+        },
+        {
+          "title": "3.3. Kết nối trigger S3",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm gắn trigger từ cloudphoto-input-103308504802 tới Lambda với loại sự kiện s3:ObjectCreated:* và tiền tố uploads/. Ảnh được ghi vào vùng này sẽ kích hoạt xử lý; bucket output được tách riêng để thumbnail không quay lại nguồn kích hoạt."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E09_lambda-s3-trigger.png",
+              "caption": "Trigger từ bucket đầu vào với sự kiện ObjectCreated và tiền tố uploads/"
+            }
+          ]
+        },
+        {
+          "title": "3.4. Kiểm chứng luồng tải ảnh từ S3",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Lần thử ban đầu dùng landscape.jpg, ảnh JPEG 1600 × 1000 pixel, dung lượng 31.685 byte. Ảnh được tải lên uploads/landscape.jpg trong bucket input lúc 10:51:02 ngày 18/10/2026, theo giờ Việt Nam."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E10_s3-input-landscape.png",
+              "caption": "Ảnh gốc landscape.jpg trong bucket đầu vào"
+            },
+            {
+              "type": "p",
+              "text": "Bucket output xuất hiện ba tệp 150.jpg, 400.jpg và 1000.jpg trong thư mục có image_id 1a4c50af7f5bce6c5514d3c3e37a4322. Các object được ghi vào khoảng 10:51:04. Kết quả cho thấy ảnh tải qua S3 đã kích hoạt worker và được lưu thành ba phiên bản riêng."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E11_s3-output-three-thumbnails.png",
+              "caption": "Ba thumbnail của cùng một ảnh trong bucket đầu ra"
+            }
+          ]
+        },
+        {
+          "title": "3.5. Chất lượng ảnh và kích thước đầu ra",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm tải 1000.jpg từ S3 và kiểm tra ảnh cùng thông số trong Windows Properties. Ảnh có watermark CLOUD PHOTO ở góc dưới bên phải, kích thước 1000 × 625 pixel, giữ tỷ lệ 1600:1000 của ảnh gốc. Metadata của hai phiên bản còn lại lần lượt là 150 × 94 và 400 × 250 pixel; sai số làm tròn một pixel ở cạnh ngắn phù hợp với thao tác thu nhỏ."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E12_thumbnail-watermark-dimensions.png",
+              "caption": "Ảnh kết quả có watermark và kích thước 1000 × 625 pixel"
+            }
+          ]
+        },
+        {
+          "title": "3.6. Ghi nhận metadata trong DynamoDB",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Bảng cloud-photo-metadata ghi trạng thái COMPLETE cho uploads/landscape.jpg, kèm bucket nguồn, bucket đầu ra, kích thước ảnh gốc và processing_ms = 529. Danh sách variants lưu kích thước, dung lượng và khóa S3 của các thumbnail, giúp ứng dụng liên kết metadata với tệp ảnh thực tế."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E13a_dynamodb-complete-original.png",
+              "caption": "DynamoDB ghi nhận ảnh gốc, trạng thái COMPLETE và thời gian xử lý"
+            },
+            {
+              "type": "p",
+              "text": "Các khóa thumbnail trong variants trỏ tới cùng image_id đã xuất hiện trên S3. Hai phiên bản 400 và 1000 pixel có kích thước 400 × 250 và 1000 × 625 pixel. Việc đối chiếu đồng thời nguồn ảnh, thư mục đầu ra và metadata giúp xác nhận kết quả thuộc cùng một lần xử lý."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E13d_dynamodb-variants-400-1000.png",
+              "caption": "Metadata của các phiên bản 400 và 1000 pixel cùng khóa lưu trữ S3"
+            }
+          ]
+        },
+        {
+          "title": "3.7. Nhật ký, thời gian và bộ nhớ",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Log group /aws/lambda/cloud-photo-processor ghi sự kiện COMPLETE cho image_id của lần thử S3 ban đầu và dòng REPORT tương ứng. Các thông số dưới đây lấy từ một invocation cụ thể; không được xem là giá trị trung bình hoặc cam kết hiệu năng của hệ thống."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Thông số",
+                "Giá trị quan sát"
+              ],
+              "rows": [
+                [
+                  "processing_ms",
+                  "529 ms — thời gian được đo bên trong worker"
+                ],
+                [
+                  "Duration",
+                  "579,67 ms — thời gian thực thi invocation"
+                ],
+                [
+                  "Init Duration",
+                  "606,30 ms — thời gian khởi tạo được ghi trong REPORT"
+                ],
+                [
+                  "Billed Duration",
+                  "1186 ms — thời gian tính cước hiển thị của invocation"
+                ],
+                [
+                  "Memory Size / Max Memory Used",
+                  "1024 MB / 152 MB"
+                ]
+              ]
+            },
+            {
+              "type": "fig",
+              "file": "trung/E14b_cloudwatch-report-details.png",
+              "caption": "Log COMPLETE và REPORT của lần xử lý ảnh từ S3"
+            },
+            {
+              "type": "p",
+              "text": "Nhóm đặt thời gian lưu log là một tuần để giới hạn thời gian giữ dữ liệu giám sát. Biểu đồ Monitor tại thời điểm kiểm tra ban đầu ghi nhận một invocation, Errors bằng 0 và Duration khoảng 580 ms, phù hợp với REPORT. Mốc 03:51 UTC trên biểu đồ tương ứng 10:51 tại Việt Nam."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E14c_cloudwatch-retention-7-days.png",
+              "caption": "Log group được cấu hình lưu nhật ký trong một tuần"
+            },
+            {
+              "type": "fig",
+              "file": "trung/E15_lambda-monitor-metrics.png",
+              "caption": "Chỉ số invocation, thời gian và lỗi trong lần thử ban đầu"
+            },
+            {
+              "type": "p",
+              "text": "processing_ms, Duration và Init Duration đo các phần khác nhau của quá trình thực thi. Những giá trị này không đại diện toàn bộ thời gian từ khi người dùng bấm tải ảnh đến khi gallery cập nhật."
+            }
+          ]
+        },
+        {
+          "title": "3.8. Kiểm tra xử lý sự kiện trùng",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm gọi Lambda hai lần với cùng JSON mô phỏng sự kiện của uploads/landscape.jpg và cùng sequencer. Lần đầu ghi COMPLETE; lần tiếp theo trả DUPLICATE và ghi DUPLICATE_SKIPPED cho image_id fbadbc0151913006011378f25f41f895."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E19b_cloudwatch-complete-duplicate.png",
+              "caption": "Hai lần gọi cùng sự kiện có COMPLETE và DUPLICATE_SKIPPED với cùng image_id"
+            },
+            {
+              "type": "p",
+              "text": "Ba object đầu ra giữ thời gian sửa cuối 11:15:48–49, trước lần gọi trùng lúc 11:16:05. Kết hợp log và thông tin object, lần gọi lặp đã bỏ qua ảnh hoàn tất thay vì ghi lại thumbnail. Sự kiện mô phỏng sử dụng revision riêng nên image_id này khác lần S3 tự phát ở mục 3.4."
+            },
+            {
+              "type": "fig",
+              "file": "trung/E19c_s3-output-after-duplicate.png",
+              "caption": "Ba object đầu ra giữ thời gian sửa trước lần gọi trùng"
+            }
+          ]
+        },
+        {
+          "title": "3.9. Kiểm tra tách nguồn đầu vào và đầu ra",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm tải tệp thử loop-check.jpg.jpg vào thư mục gốc của bucket output lúc 11:22:59 giờ Việt Nam. Tệp này chỉ dùng để kiểm tra nguồn sự kiện; không thuộc các thumbnail được worker tạo ra."
+            },
+            {
+              "type": "fig",
+              "file": "trung/T09a_output-loop-check-upload.png",
+              "caption": "Object thử nghiệm được tải trực tiếp vào bucket đầu ra"
+            },
+            {
+              "type": "p",
+              "text": "Trong log stream được kiểm tra sau đó, các sự kiện cuối vẫn thuộc lần gọi trùng lúc 04:16:05 UTC, trước thời điểm tải tệp vào output là 04:22:59 UTC. Nhóm đồng thời xác nhận bucket output có 0 Event notifications và EventBridge ở trạng thái Off."
+            },
+            {
+              "type": "fig",
+              "file": "trung/T09b_cloudwatch-after-output-upload.png",
+              "caption": "Log stream được đối chiếu sau lần tải object vào output"
+            },
+            {
+              "type": "fig",
+              "file": "trung/T09c_output-no-event-notifications.png",
+              "caption": "Bucket output không cấu hình Event notifications và không bật EventBridge"
+            },
+            {
+              "type": "p",
+              "text": "Kết quả phù hợp với thiết kế chỉ lấy sự kiện từ bucket input. Kết luận của phép thử dựa trên cấu hình nguồn sự kiện và các log đã quan sát; không mở rộng thành bảo đảm cho mọi thay đổi cấu hình trong tương lai."
+            }
+          ]
+        },
+        {
+          "title": "3.10. Gallery cục bộ kết nối AWS",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm chạy Flask tại 127.0.0.1:5000, đăng nhập và tải landscape.jpg qua giao diện. Ảnh mới được xử lý trên AWS rồi xuất hiện trong gallery với watermark, ba kích thước và thông tin ảnh gốc. Thời gian xử lý hiển thị của lần upload web đầu tiên là 581 ms."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/W2-L01_gallery-landscape-complete.png",
+              "caption": "Gallery cục bộ hiển thị ảnh tải qua web và ba thumbnail"
+            },
+            {
+              "type": "p",
+              "text": "Kết quả chứng minh gallery đã đọc metadata và hiển thị ảnh từ hệ thống AWS. Lần upload web này độc lập với lần S3 ở mục 3.4 và sự kiện mô phỏng ở mục 3.8, do đó có image_id và số liệu thời gian riêng."
+            }
+          ]
+        },
+        {
+          "title": "3.11. Kiểm tra các dạng ảnh hợp lệ",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Ngoài ảnh ngang, nhóm thử ảnh dọc, ảnh vuông, PNG có nền trong suốt và ảnh nhỏ. Các trường hợp được tải qua cùng giao diện, sau đó đối chiếu hình ảnh và thông số ba phiên bản."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Ảnh đầu vào",
+                "Kích thước gốc",
+                "Ba kích thước đầu ra"
+              ],
+              "rows": [
+                [
+                  "portrait.jpg",
+                  "900 × 1500",
+                  "90 × 150; 240 × 400; 600 × 1000"
+                ],
+                [
+                  "square.png",
+                  "1000 × 1000",
+                  "150 × 150; 400 × 400; 1000 × 1000"
+                ],
+                [
+                  "transparent.png",
+                  "800 × 600",
+                  "150 × 113; 400 × 300; 800 × 600"
+                ],
+                [
+                  "small.png",
+                  "80 × 60",
+                  "80 × 60 ở cả ba phiên bản"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Ảnh dọc giữ hướng và tỷ lệ, watermark hiển thị ở góc dưới. Gallery ghi nhận processing_ms = 358 cho lần thử này."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T02_gallery-portrait-complete.png",
+              "caption": "Ảnh dọc được thu nhỏ đúng tỷ lệ"
+            },
+            {
+              "type": "p",
+              "text": "Ảnh vuông cho ba phiên bản vuông đúng kích thước, có watermark; thời gian xử lý được hiển thị là 322 ms."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T03_gallery-square-complete.png",
+              "caption": "Ảnh vuông có đủ ba kích thước"
+            },
+            {
+              "type": "p",
+              "text": "Vùng trong suốt của transparent.png chuyển thành nền trắng khi xuất JPEG. Phiên bản giới hạn 1000 pixel giữ 800 × 600 vì ảnh gốc nhỏ hơn giới hạn này; thời gian xử lý hiển thị là 252 ms."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T04_gallery-transparent-white-background.png",
+              "caption": "Ảnh PNG trong suốt được xuất thành thumbnail nền trắng"
+            },
+            {
+              "type": "p",
+              "text": "small.png có kích thước 80 × 60 pixel và cả ba đầu ra đều giữ nguyên kích thước. Kết quả xác nhận chương trình không phóng to ảnh nhỏ; processing_ms được hiển thị là 213."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T05_gallery-small-no-upscale.png",
+              "caption": "Ba phiên bản của ảnh nhỏ giữ nguyên 80 × 60 pixel"
+            }
+          ]
+        },
+        {
+          "title": "3.12. Từ chối ảnh hỏng và tệp quá lớn",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Tệp broken.jpg có phần mở rộng JPEG nhưng không chứa dữ liệu ảnh hợp lệ. Sau khi nhận và xử lý, gallery hiển thị “Ảnh không hợp lệ”, kèm thông báo lỗi; không cung cấp các phiên bản để xem. Trường hợp này kiểm tra khả năng từ chối dữ liệu hỏng thay vì kết luận theo phần mở rộng."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T06_gallery-broken-rejected.png",
+              "caption": "Gallery hiển thị kết quả từ chối broken.jpg"
+            },
+            {
+              "type": "p",
+              "text": "Với tệp vượt 10 MiB, giao diện chặn ngay từ trình duyệt. Nhóm kiểm tra thêm phía máy chủ bằng yêu cầu POST trực tiếp tới /api/upload có CSRF hợp lệ, dùng tệp 10.517.445 byte. Flask trả HTTP 400 và thông báo ảnh phải lớn hơn 0 byte, không quá 10 MiB. Kết quả cho thấy giới hạn được kiểm tra cả phía giao diện và endpoint."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T07b_api-oversize-http-400.png",
+              "caption": "Endpoint Flask từ chối tệp vượt 10 MiB với HTTP 400"
+            },
+            {
+              "type": "p",
+              "text": "Phép thử thực tế ghi nhận HTTP 400. Nhánh HTTP 413 cho request vượt giới hạn toàn bộ yêu cầu được khai báo trong mã nguồn, nhưng không được tính là nhánh đã kiểm chứng trong lần thử này."
+            }
+          ]
+        },
+        {
+          "title": "3.13. Hai lần tải ảnh cùng tên",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm tải landscape.jpg qua gallery lúc 11:42:10 và 11:49:21 giờ Việt Nam. API /api/photos trả hai bản ghi COMPLETE với image_id và source_key khác nhau. Flask giữ tên gốc để hiển thị, còn khóa S3 được tạo bằng UUID nên hai ảnh cùng tên vẫn có vị trí lưu trữ độc lập."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T10c_api-landscape-first-key.png",
+              "caption": "Bản ghi của lần upload web đầu tiên",
+              "crop_right": 60000,
+              "crop_bottom": 17000
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T10b_api-landscape-second-key.png",
+              "caption": "Bản ghi của lần upload web thứ hai có source_key và image_id khác",
+              "crop_right": 60000,
+              "crop_bottom": 15000,
+              "max_width_cm": 13.3
+            }
+          ]
+        },
+        {
+          "title": "3.14. Kiểm soát đăng nhập và CSRF",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Sau khi đăng xuất, yêu cầu GET /api/photos trả HTTP 401 UNAUTHORIZED và thông báo đăng nhập lại. Kết quả xác nhận API danh sách ảnh kiểm tra phiên xác thực, thay vì chỉ ẩn giao diện khi người dùng chưa đăng nhập."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T11_api-photos-unauthorized.png",
+              "caption": "API danh sách ảnh từ chối truy cập sau đăng xuất",
+              "crop_bottom": 38000,
+              "crop_top": 15000
+            },
+            {
+              "type": "p",
+              "text": "Nhóm tiếp tục gửi POST /api/upload không có CSRF token. Endpoint trả HTTP 403 FORBIDDEN với thông báo phiên không hợp lệ. Đây là kết quả mong đợi của cơ chế kiểm tra CSRF trước khi thực hiện upload."
+            },
+            {
+              "type": "fig",
+              "file": "tuan/T12_upload-missing-csrf-403.png",
+              "caption": "Yêu cầu POST thiếu CSRF token bị chặn với HTTP 403",
+              "crop_bottom": 71000,
+              "max_width_cm": 12.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "CHƯƠNG 4. TỔ CHỨC THỰC HIỆN VÀ ĐÁNH GIÁ",
+      "sections": [
+        {
+          "title": "4.1. Phân công trong nhóm",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm tổ chức công việc theo hai phần: triển khai tài nguyên và xử lý trên AWS; kết nối giao diện, kiểm thử và tổng hợp kết quả. Bảng dưới trình bày phạm vi phân công của hai thành viên."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Thành viên",
+                "Phạm vi phân công"
+              ],
+              "rows": [
+                [
+                  "Bùi Nguyễn Duy Trung — 24110363",
+                  "Lambda, Pillow Layer, trigger S3, kiểm tra ảnh đầu ra, metadata DynamoDB, CloudWatch và xử lý sự kiện trùng."
+                ],
+                [
+                  "Đỗ Anh Tuấn — 24110369",
+                  "Gallery cục bộ, các ca kiểm thử qua web/API, đối chiếu ảnh minh chứng và tổng hợp báo cáo."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "4.2. Tổng hợp kiểm thử",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm đối chiếu 12 tình huống kiểm tra với ảnh chụp và log thực tế ngày 18/10/2026. Các kết quả đạt được giới hạn trong đầu vào, cấu hình và thời điểm đã quan sát; không thay cho kiểm thử tải lớn hoặc kiểm thử toàn bộ nhánh lỗi."
+            },
+            {
+              "type": "test_table"
+            },
+            {
+              "type": "p",
+              "text": "Bộ 19 ca pytest kiểm tra logic bằng AWS giả lập; 12 tình huống trên kiểm tra vận hành hệ thống trong Learner Lab và gallery cục bộ. Hai nhóm kết quả có mục đích khác nhau và được ghi nhận riêng. Riêng phép thử bucket output được kết luận theo cấu hình notification cùng log đã đối chiếu, không chỉ dựa vào một lần refresh."
+            }
+          ]
+        },
+        {
+          "title": "4.3. Mã nguồn và đối chiếu phiên bản",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Mã xử lý ảnh, Lambda, Flask và bộ kiểm thử được kế thừa từ tuần 1. Trọng tâm tuần 2 là cấu hình và kiểm chứng các thành phần này với AWS thật. Các liên kết dưới đây trỏ tới mã nguồn và commit nền đã có trên GitHub để đối chiếu nội dung triển khai."
+            },
+            {
+              "type": "code_links"
+            }
+          ]
+        },
+        {
+          "title": "4.4. Khai báo sử dụng AI",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Nhóm sử dụng ChatGPT/Codex để hỗ trợ rà soát tài liệu, giải thích cấu hình AWS, hướng dẫn kiểm thử, đọc log và biên tập báo cáo. Phiên bản model cụ thể không được ghi nhận trong hồ sơ tuần này."
+            },
+            {
+              "type": "p",
+              "text": "Yêu cầu trao đổi được tóm lược như sau: tiếp tục từ nền tảng tuần 1, hướng dẫn tích hợp S3–Lambda–DynamoDB và gallery, xác định ảnh cần chụp, giải thích kết quả và tổ chức báo cáo tuần 2 theo minh chứng thực tế."
+            },
+            {
+              "type": "p",
+              "text": "AI hỗ trợ đề xuất trình tự cấu hình, lệnh khởi chạy, yêu cầu thử API và bố cục trình bày. Nhóm trực tiếp thao tác trong Learner Lab, chạy gallery và các phép thử, thu thập ảnh màn hình, đối chiếu trạng thái, kích thước, source_key và thông số log. Các ảnh trong báo cáo là ảnh chụp kết quả thực tế; không sử dụng ảnh AWS do AI tạo."
+            },
+            {
+              "type": "ai_evidence"
+            },
+            {
+              "type": "p",
+              "text": "Các commit mã nguồn được dẫn ở mục 4.3 ghi nhận phiên bản nền kế thừa từ tuần 1. Kết quả vận hành tuần 2 được đối chiếu bằng các hình trong chương 3; không dùng ngày commit nền để suy ra ngày cấu hình hoặc nguồn gốc từng dòng mã."
+            }
+          ]
+        },
+        {
+          "title": "4.5. Đánh giá kết quả và giới hạn",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Tuần 2 đã thực hiện được luồng tải ảnh lên S3, kích hoạt Lambda, tạo ba thumbnail có watermark, lưu vào bucket riêng và cập nhật metadata DynamoDB. Gallery cục bộ đã tải và hiển thị kết quả từ AWS; các trường hợp ảnh hợp lệ, ảnh hỏng, quá dung lượng, tải trùng tên, đăng xuất và thiếu CSRF đều cho kết quả phù hợp với tiêu chí đã kiểm tra."
+            },
+            {
+              "type": "p",
+              "text": "Cơ chế xử lý trùng đã bỏ qua sự kiện hoàn tất mà không ghi lại các object đầu ra trong phép thử. Việc tách bucket và cấu hình nguồn sự kiện hạn chế vòng lặp. CloudWatch cung cấp log và số liệu để đối chiếu cùng một lần xử lý, hỗ trợ xác định trạng thái và lỗi."
+            },
+            {
+              "type": "p",
+              "text": "Số liệu thời gian và bộ nhớ hiện lấy từ các lần thử đơn lẻ, chưa đủ để kết luận tối ưu tài nguyên hoặc khả năng chịu tải. Các tình huống lỗi mạng, timeout, thiếu bộ nhớ và retry phục hồi trên AWS chưa được thử đầy đủ. Gallery vẫn chạy cục bộ, chưa triển khai trên EC2."
+            }
+          ]
+        },
+        {
+          "title": "4.6. Hướng phát triển tuần 3",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Giai đoạn tiếp theo dự kiến triển khai gallery trên EC2 bằng quyền truy cập phù hợp, kiểm tra kết nối từ môi trường triển khai tới S3/DynamoDB và tiếp tục theo dõi log, lỗi. Nhóm sẽ bổ sung kiểm tra truy cập ảnh riêng tư, thời hạn URL, khởi động lại ứng dụng và các tình huống vận hành trước khi đánh giá toàn bộ hệ thống."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
