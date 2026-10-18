@@ -74,7 +74,7 @@ Báo cáo gồm 25 trang, trình bày kiến trúc, cấu hình triển khai, k�
 
 ## 6. Khai báo hỗ trợ AI
 
-**Công cụ:** ChatGPT/Codex. Phiên bản model cụ thể không được ghi nhận trong hồ sơ tuần 2.
+**Công cụ:** ChatGPT/Codex. Phiên bản model: 6.1 Sol
 
 **Prompt đã dùng — tóm lược:** Tiếp tục tích hợp hệ thống từ tuần 1; hướng dẫn cấu hình S3–Lambda–DynamoDB và gallery; đề xuất cách kiểm thử, giải thích log và kết quả; tổ chức ảnh, biên tập báo cáo và tổng hợp nội dung nộp bài.
 
