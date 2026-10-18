@@ -38,6 +38,14 @@ diagrams/
 *.pdf
 *.zip
 !Report/BaoCaoTuan1_24110363_24110369.docx
+!Report/BaoCaoTuan2_24110363_24110369.docx
+# Week 2 evidence selected for the weekly submission
+!evidence/
+!evidence/tuan-2/
+!evidence/tuan-2/**
+evidence/tuan-2/**/*.log
+evidence/tuan-2/**/*.local.json
+evidence/tuan-2/anhminhchung/
 ~$*
 
 # Editor and operating system files
