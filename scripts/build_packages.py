@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--skip-layer", action="store_true")
     args = parser.parse_args()
     archive(ROOT / "src/processor", DIST / "lambda_processor.zip")
+    archive(ROOT / "src/web", DIST / "web_app.zip", "web/")
     if not args.skip_layer:
         with tempfile.TemporaryDirectory(prefix="cloud-photo-layer-") as temp:
             python_dir = Path(temp) / "python"
@@ -57,7 +58,7 @@ def main():
             )
             archive(Path(temp), DIST / "pillow_py312_x86_64.zip")
     print("Packages created in", DIST)
-    for name in ("lambda_processor.zip", "pillow_py312_x86_64.zip"):
+    for name in ("lambda_processor.zip", "web_app.zip", "pillow_py312_x86_64.zip"):
         p = DIST / name
         if not p.exists():
             continue
