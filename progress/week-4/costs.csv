@@ -1,0 +1,18 @@
+Dịch vụ,Thành phần chi phí,Đơn giá AWS (us-east-1),Mức dùng thực tế Lab,Chi phí thực tế Lab,Mức dùng dự tính (10.000 ảnh/tháng),Chi phí dự tính (10.000 ảnh/tháng)
+Amazon EC2,t2.micro (1 vCPU 1 GiB),0.0116 USD/giờ,12 giờ,0.14 USD,720 giờ (chạy liên tục 24/7),8.35 USD
+Amazon EBS,gp3 General Purpose SSD,0.08 USD/GB-tháng,8 GiB x 0.5 tháng,0.32 USD,8 GiB x 1 tháng,0.64 USD
+Amazon EC2,Public IPv4 Address,0.005 USD/giờ,12 giờ,0.06 USD,720 giờ,3.60 USD
+Amazon S3,Standard Storage,0.023 USD/GB-tháng,0.05 GB,0.00 USD,15 GB (gốc + 3 thumbnail),0.35 USD
+Amazon S3,PUT/POST/COPY requests,0.005 USD/1.000 requests,50 requests,0.00 USD,40.000 requests,0.20 USD
+Amazon S3,GET and other requests,0.0004 USD/1.000 requests,120 requests,0.00 USD,100.000 requests,0.04 USD
+Amazon S3,Lifecycle Transitions/Expiration,0.00 USD (Expiration free),30 objects,0.00 USD,30.000 objects,0.00 USD
+AWS Lambda,Invocations (Số lần gọi),0.20 USD/1.000.000 requests,15 invocations (Free Tier),0.00 USD,10.000 invocations (Free Tier),0.00 USD
+AWS Lambda,Compute Time (1024 MB ~ 600ms),0.0000166667 USD/GB-giây,9.0 GB-giây (Free Tier),0.00 USD,6.000 GB-giây (Free Tier),0.00 USD
+Amazon DynamoDB,Write Request Units (WRU),1.25 USD/1.000.000 WRU,20 writes,0.00 USD,20.000 writes,0.03 USD
+Amazon DynamoDB,Read Request Units (RRU),0.25 USD/1.000.000 RRU,80 reads,0.00 USD,150.000 reads,0.04 USD
+Amazon DynamoDB,Indexed Data Storage,0.25 USD/GB-tháng (25 GB free),0.001 GB (Free Tier),0.00 USD,0.02 GB (Free Tier),0.00 USD
+Amazon CloudWatch,Logs Ingestion,0.50 USD/GB (5 GB free),0.01 GB (Free Tier),0.00 USD,0.15 GB (Free Tier),0.00 USD
+Amazon CloudWatch,Logs Storage (7 days),0.03 USD/GB-tháng,0.01 GB (Free Tier),0.00 USD,0.15 GB (Free Tier),0.00 USD
+AWS Data Transfer,Internet Data Transfer OUT,0.09 USD/GB (100 GB/tháng free),0.05 GB (Free Tier),0.00 USD,5.0 GB (Free Tier),0.00 USD
+TỔNG CỘNG,Tất cả dịch vụ kết hợp,,Học tập thực tế,0.52 USD (hoàn toàn trừ vào $100 Lab Credit),Doanh nghiệp nhỏ (10.000 ảnh/tháng),13.21 USD/tháng
+

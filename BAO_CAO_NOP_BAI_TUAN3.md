@@ -125,5 +125,3 @@ Do giới hạn của môi trường học tập AWS Academy Learner Lab, máy c
 
 Tuần 4 dự kiến hoàn thiện hạch toán chi phí AWS, quay video demo sản phẩm hoàn chỉnh và chuẩn bị báo cáo tổng kết đồ án cuối kỳ.
 
-Tuần 4 dự kiến hoàn thiện hạch toán chi phí AWS, quay video demo sản phẩm hoàn chỉnh và chuẩn bị báo cáo tổng kết đồ án cuối kỳ.
-

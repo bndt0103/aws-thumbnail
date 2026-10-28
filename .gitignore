@@ -40,6 +40,8 @@ diagrams/
 !Report/BaoCaoTuan1_24110363_24110369.docx
 !Report/BaoCaoTuan2_24110363_24110369.docx
 !Report/BaoCaoTuan3_24110363_24110369.docx
+!Report/BaoCaoTuan4_24110363_24110369.docx
+!Report/BaoCaoTongKet_24110363_24110369.docx
 # Week 2 evidence selected for the weekly submission
 !evidence/
 !evidence/tuan-2/
@@ -54,6 +56,13 @@ evidence/tuan-2/anhminhchung/
 evidence/tuan-3/**/*.log
 evidence/tuan-3/**/*.local.json
 evidence/tuan-3/anhminhchung/
+
+# Week 4 evidence selected for the final submission
+!evidence/tuan-4/
+!evidence/tuan-4/**
+evidence/tuan-4/**/*.log
+evidence/tuan-4/**/*.local.json
+evidence/tuan-4/anhminhchung/
 ~$*
 
 # Editor and operating system files
