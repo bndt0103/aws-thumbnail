@@ -1,0 +1,6 @@
+Hạng mục,Nội dung thực hiện,Người phụ trách,Trạng thái,Ghi chú
+Hạch toán chi phí AWS,Bảng phân tích chi phí us-east-1 cho EC2 EBS S3 Lambda DynamoDB CloudWatch; so sánh Serverless vs Pure EC2,Bùi Nguyễn Duy Trung,Hoàn thành,progress/week-4/costs.csv & E27
+Video Demo sản phẩm,Kịch bản phân cảnh 8分45秒 quay toàn diện EC2 Web Gallery S3 Serverless Lambda Layer và bảo mật,Đỗ Anh Tuấn & Bùi Nguyễn Duy Trung,Hoàn thành,HUONG_DAN_TUAN_4.md & E28
+Dọn dẹp tài nguyên AWS,Script teardown an toàn và quy trình dọn S3 EC2 Lambda DynamoDB CloudWatch,Bùi Nguyễn Duy Trung,Hoàn thành,scripts/teardown_resources.py & E29
+Báo cáo tổng kết đồ án,Báo cáo Word cuối kỳ và Markdown nộp bài; sửa lỗi lặp câu ở Mục 7; đối chiếu commit,Nhóm thực hiện,Chờ commit GitHub,BaoCaoTongKet.docx & BAO_CAO_NOP_BAI_TUAN4.md
+

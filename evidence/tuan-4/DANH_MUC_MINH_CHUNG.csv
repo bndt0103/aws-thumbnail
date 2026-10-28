@@ -1,0 +1,7 @@
+id,file,caption,captured_at,member,status,report_section,include_in_report,sha256
+E27,trung/E27_aws-cost-breakdown.png,"Màn hình quản trị AWS Academy Learner Lab hiển thị ngân sách thực tế Used $0 of $50",2026-10-28T10:06:53+07:00,Bùi Nguyễn Duy Trung,Đã đối chiếu tệp gốc,4.1,yes,5a39782291347f7b5cb28686d490da82fda45764d29cdf7a0e41a4938b211a57
+E28,tuan/E28_demo-video-link.png,"Video demo sản phẩm hoàn chỉnh Demo Xu Ly Anh Tu Dong AWS trên Google Drive",2026-10-28T12:01:41+07:00,Đỗ Anh Tuấn,Đã đối chiếu tệp gốc,4.2,yes,581810bda11b0978d9d281995a04670216730d36285c5659ecd621c8e3a1ec1e
+E29a,trung/E29a_ec2-instance-terminated.png,"Máy chủ EC2 cloud-photo-gallery (i-0390fda0b0a75c002) trạng thái Terminated",2026-10-28T12:21:22+07:00,Bùi Nguyễn Duy Trung,Đã đối chiếu tệp gốc,4.3,yes,e2c83f7146fa5a06f4f04ba914192833f095f0bfea2733e7a96dab5679297e84
+E29b,trung/E29b_s3-buckets-deleted.png,"Danh sách Amazon S3 Buckets rỗng hoàn toàn General purpose buckets (0) sau khi dọn dẹp",2026-10-28T12:21:22+07:00,Bùi Nguyễn Duy Trung,Đã đối chiếu tệp gốc,4.3,yes,56856cc732dd2b9a0bc9c3129e127388e51e3139878c2d7f5ca8613d9b096d14
+E29c,trung/E29c_dynamodb-tables-deleted.png,"Danh sách bảng Amazon DynamoDB rỗng hoàn toàn Tables (0) sau khi xóa bảng metadata",2026-10-28T12:21:22+07:00,Bùi Nguyễn Duy Trung,Đã đối chiếu tệp gốc,4.3,yes,e819e2cb1f1540f0c7f8029f5ce74e997b7bd3108fad807be929f690595f118c
+
